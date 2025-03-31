@@ -3,49 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu de Tank</title>
+    <title>Jeu de Tank - Étape 1</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-    <style>
-        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #333; }
-    </style>
 </head>
 <body>
     <script>
+        // Configuration du jeu
         let config = {
-            type: Phaser.AUTO,
+            type: Phaser.AUTO, // Phaser choisit WebGL ou Canvas automatiquement
             width: 800,
             height: 600,
-            physics: { default: 'arcade', arcade: { debug: false } },
-            scene: { preload: preload, create: create, update: update }
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
         };
 
+        // Création du jeu
         let game = new Phaser.Game(config);
-        let tank;
 
+        // Chargement des ressources
         function preload() {
-            this.load.image('tank', 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Simple_tank.png'); // Image de tank en ligne
+            console.log("🔄 Chargement des ressources...");
         }
 
+        // Initialisation de la scène
         function create() {
-            tank = this.physics.add.image(400, 300, 'tank');
-            tank.setCollideWorldBounds(true);
-            this.cursors = this.input.keyboard.createCursorKeys();
+            console.log("✅ Scène créée !");
         }
 
+        // Mise à jour (boucle du jeu)
         function update() {
-            if (this.cursors.left.isDown) {
-                tank.setAngularVelocity(-150);
-            } else if (this.cursors.right.isDown) {
-                tank.setAngularVelocity(150);
-            } else {
-                tank.setAngularVelocity(0);
-            }
-
-            if (this.cursors.up.isDown) {
-                this.physics.velocityFromRotation(tank.rotation, 200, tank.body.velocity);
-            } else {
-                tank.setVelocity(0);
-            }
+            console.log("🎮 Mise à jour en cours...");
         }
     </script>
 </body>
